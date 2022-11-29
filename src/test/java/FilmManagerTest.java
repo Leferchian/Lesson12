@@ -90,4 +90,55 @@ class FilmManagerTest {
 
 
     }
+
+    @Test
+    void shouldReverseThisEqualLimit() {
+        FilmManager man = new FilmManager(13);
+        man.save(item1);
+        man.save(item2);
+        man.save(item3);
+        man.save(item4);
+        man.save(item5);
+        man.save(item6);
+        man.save(item7);
+        man.save(item8);
+        man.save(item9);
+        man.save(item10);
+        man.save(item11);
+        man.save(item12);
+        man.save(item13);
+
+        PurchaseFilm[] expected = {item13, item12, item11, item10, item9, item8, item7, item6, item5, item4, item3, item2, item1};
+        PurchaseFilm[] actual = man.getLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+
+    }
+
+    @Test
+    void shouldReverseOverLimit() {
+        FilmManager man = new FilmManager(14);
+        man.save(item1);
+        man.save(item2);
+        man.save(item3);
+        man.save(item4);
+        man.save(item5);
+        man.save(item6);
+        man.save(item7);
+        man.save(item8);
+        man.save(item9);
+        man.save(item10);
+        man.save(item11);
+        man.save(item12);
+        man.save(item13);
+
+        PurchaseFilm[] expected = {item13, item12, item11, item10, item9, item8, item7, item6, item5, item4, item3, item2, item1};
+        PurchaseFilm[] actual = man.getLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
 }
+
